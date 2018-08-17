@@ -1,0 +1,12 @@
+FROM centos
+
+MAINTAINER praveensam
+
+RUN yum install epel-release -y \
+    && yum install nginx -y 
+
+COPY cert.key /etc/nginx/
+COPY cert.crt /etc/nginx/
+COPY nginx.conf /etc/nginx/
+
+CMD ["nginx","-g","daemon off;"]
